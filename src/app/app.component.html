@@ -1,0 +1,71 @@
+<div *ngIf="mostrarMascota">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" (click)="onChangeComponent(0)">
+        <img src="https://static.vecteezy.com/system/resources/previews/006/099/883/original/illustration-of-the-logo-of-the-veterinary-clinic-vector.jpg" width="30" height="24" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" (click)="onChangeComponent(1)">Crear Mascota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeComponent(2)">Modificar Mascota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeComponent(3)">Borrar Mascota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeComponent(4)">Consultar Mascota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeCRUD('Atenciones')">Ir a Atenciones</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <app-add-mascota *ngIf="indice === 1"></app-add-mascota>
+    <app-change-mascota *ngIf="indice === 2"></app-change-mascota>
+    <app-delete-mascota *ngIf="indice === 3"></app-delete-mascota>
+    <app-list-mascotas *ngIf="indice === 4"></app-list-mascotas>
+  </div>
+</div>
+<div *ngIf="!mostrarMascota">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" (click)="onChangeComponent(0)">
+        <img src="https://static.vecteezy.com/system/resources/previews/006/099/883/original/illustration-of-the-logo-of-the-veterinary-clinic-vector.jpg" width="30" height="24" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" (click)="onChangeComponent(1)">Crear Atencion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeComponent(3)">Borrar Atencion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeComponent(4)">Consultar Atencion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onChangeCRUD('Mascota')">Ir a Macotas</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <app-add-atencion *ngIf="indice === 1"></app-add-atencion>
+    <app-delete-atencion *ngIf="indice === 3"></app-delete-atencion>
+    <app-list-atencion *ngIf="indice === 4"></app-list-atencion>
+  </div>
+</div>
+

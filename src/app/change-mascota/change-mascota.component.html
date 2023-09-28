@@ -1,0 +1,56 @@
+<form class="row g-3" #miFormulario="ngForm" (ngSubmit)="onChange(miFormulario)">
+    <div class="form-group">
+        <select (click)="onLoadData(miFormulario)" name="mascota" ngModel class="form-select" id="inputGroupSelect01">
+          <option [value]="mascota.id" *ngFor="let mascota of localListMascota" > {{mascota.nombre}} </option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label for="validationServer01" class="form-label">Nombre Mascota</label>
+        <input type="text" class="form-control" id="validationServer01" placeholder="Tango"
+        name="nombre"
+        #nombreField = "ngModel"
+        [(ngModel)]="mascota.nombre"
+        [ngClass]="{ 'is-invalid': nombreField.invalid && miFormulario.submitted}" required maxlength="250">
+        <div class="invalid-feedback">
+            Nombre invalido
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationServer02" class="form-label">Nombre Tutor</label>
+        <input type="text" class="form-control" id="validationServer02" placeholder="Imanol"
+        name="tutor"
+        #tutorField = "ngModel"
+        [(ngModel)]="mascota.tutor"
+        [ngClass]="{ 'is-invalid': tutorField.invalid && miFormulario.submitted}"  required maxlength="300">
+        <div class="invalid-feedback">
+            Tutor invalido
+        </div>
+    </div>
+    <div class="form'group">
+        <label for="validationServer01" class="form-label">Genero</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" [(ngModel)]="mascota.genero" value="Masculino" id="radioMasculino">
+            <label class="form-check-label" for="genero">
+                Masculino
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" [(ngModel)]="mascota.genero" value="Femenino" id="radioFemenino" checked>
+            <label class="form-check-label" for="genero">
+                Femenino
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1" class="form-label">Año Nacimiento</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1"
+            name="anioNacimiento" #anioNacimientoField="ngModel" [(ngModel)] = "mascota.anioNacimiento"
+            [ngClass]="{ 'is-invalid': (anioNacimientoField.value <= 2000 || anioNacimientoField.value === undefined) && miFormulario.submitted}"
+            required minlength="1" maxlength="30">
+        <div id="validationMateria" class="invalid-feedback">
+            año invalido
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

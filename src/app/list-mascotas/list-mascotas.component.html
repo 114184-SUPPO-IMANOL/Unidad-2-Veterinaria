@@ -1,0 +1,44 @@
+<form class="row g-3" #miFormulario="ngForm">
+  <div class="form'group">
+    <label for="validationServer01" class="form-label">Genero</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="genero" [(ngModel)]="mascota.genero" value="Masculino" (click)="onFiltrarGenero('Masculino')" id="radioMasculino">
+        <label class="form-check-label" for="genero">
+            Masculino
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="genero" [(ngModel)]="mascota.genero" value="Femenino" (click)="onFiltrarGenero('Femenino')" id="radioFemenino" checked>
+        <label class="form-check-label" for="genero">
+            Femenino
+        </label>
+    </div>
+</div>
+<div class="col-md-4">
+  <label for="validationServer01" class="form-label">Nombre Mascota</label>
+  <input type="text" class="form-control" id="validationServer01" placeholder="Tango"
+  name="nombre"
+  #nombreField = "ngModel"
+  [(ngModel)]="mascota.nombre"
+  (input)="onFiltrarNombre($event)">
+</div>
+</form>
+<h1>Listado Mascotas</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Mascota</th>
+        <th scope="col">Tutor</th>
+        <th scope="col">Genero</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mascota of localListMascota">
+        <th scope="row">{{mascota.id}}</th>
+        <td>{{mascota.nombre}}</td>
+        <td>{{mascota.tutor}}</td>
+        <td>{{mascota.genero}}</td>
+      </tr>
+    </tbody>
+  </table>
